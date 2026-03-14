@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
+  color-scheme: light only;
   --ink:      #0A0A0B;
   --ink-2:    #1C1C1E;
   --ink-3:    #2E2E30;
@@ -43,6 +44,7 @@ body::before {
 
 /* CURSOR */
 .cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
+@media (hover: none), (pointer: coarse) { .cursor { display: none !important; } body, a, button, .bar-item, .skill-cell, .side-dot, .scroll-top, .cta-btn, .company-link, .contact-link { cursor: auto !important; } }
 .cursor-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); position: absolute; transform: translate(-50%,-50%); transition: background 0.15s; }
 .cursor-ring { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--accent); position: absolute; transform: translate(-50%,-50%); transition: width 0.3s var(--expo), height 0.3s var(--expo), border-color 0.15s, opacity 0.3s; opacity: 0.7; }
 body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: 0.35; }
@@ -70,9 +72,9 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52p
 .stt-icon { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.8; transition: stroke 0.2s; }
 
 /* HERO */
-.hero { min-height: 100vh; padding-top: 36px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; position: relative; overflow: hidden; }
+.hero { min-height: 100vh; padding-top: 36px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; position: relative; overflow: hidden; background: var(--paper); }
 .hero-bg-letter { position: absolute; right: -0.05em; top: 50%; transform: translateY(-54%); font-family: var(--f-display); font-size: clamp(280px,42vw,580px); font-weight: 700; font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(184,134,11,0.12); pointer-events: none; user-select: none; line-height: 1; z-index: 0; }
-.hero-left { grid-column: 1; grid-row: 1; padding: 8vh 6vw 6vh 7vw; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.hero-left { grid-column: 1; grid-row: 1; padding: 8vh 6vw 6vh 7vw; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; background: var(--paper); }
 .hero-eyebrow { font-family: var(--f-mono); font-size: 10px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 12px; }
 .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
 .hero-name { font-family: var(--f-display); font-size: clamp(52px,8vw,104px); font-weight: 600; line-height: 0.95; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.2em; }
@@ -210,7 +212,25 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52p
 .footer-copy { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); }
 
 /* RESPONSIVE */
+/* Mobile headshot */
+.hero-headshot-mobile { display: none; }
 @media (max-width: 900px) {
+  .hero-bg-letter { display: none; }
+  .hero-headshot-mobile {
+    display: block;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    margin-top: 2.5rem;
+  }
+  .hero-headshot-mobile img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    opacity: 0.9;
+  }
   .hero { grid-template-columns: 1fr; }
   .hero-right { display: none; }
   .hero-left { padding: 8vh 6vw; }
@@ -287,6 +307,9 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52p
         <div class="stat"><span class="stat-num">9<sup>+</sup></span><span class="stat-label">Years in Sales</span></div>
         <div class="stat"><span class="stat-num">60<sup>+</sup></span><span class="stat-label">Team ICs Led</span></div>
         <div class="stat"><span class="stat-num">6</span><span class="stat-label">SaaS Companies</span></div>
+      </div>
+      <div class="hero-headshot-mobile">
+        <img src="zack_balzer_headshot.webp" alt="Zack Balzer" onerror="this.style.display='none'" />
       </div>
     </div>
     <div class="hero-right">
