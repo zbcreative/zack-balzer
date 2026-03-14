@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zack Balzer — Senior Sales Leader</title>
+<meta name="description" content="Zack Balzer — Senior SaaS Sales Leader with 9+ years driving revenue growth, leading 60+ person teams, and consistently exceeding quota across competitive B2B markets.">
+<meta name="keywords" content="Zack Balzer, Senior Account Executive, SaaS Sales, Sales Leader, Business Development, St. Louis, Head of Sales, RepeatMD, Secure24, Zenoti, Lunchbox, Squire, Mindbody">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #0A0A0B;
+  --ink-2:    #1C1C1E;
+  --ink-3:    #2E2E30;
+  --mid:      #6B6B70;
+  --muted:    #9D9DA5;
+  --rule:     #E2E2E8;
+  --paper:    #FAFAF8;
+  --white:    #FFFFFF;
+  --gold:     #B8860B;
+  --gold-lt:  #D4A017;
+  --gold-dim: #F5E9C8;
+  --accent:   #C9A84C;
+  --f-display: 'Cormorant Garamond', Georgia, serif;
+  --f-sans:    'Syne', sans-serif;
+  --f-mono:    'DM Mono', monospace;
+  --expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--f-sans); overflow-x: hidden; cursor: none; }
+::selection { background: var(--gold-dim); color: var(--ink); }
 
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.018; pointer-events: none;
+}
+.page { position: relative; z-index: 1; }
+
+/* CURSOR */
+.cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
+.cursor-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); position: absolute; transform: translate(-50%,-50%); transition: background 0.15s; }
+.cursor-ring { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--accent); position: absolute; transform: translate(-50%,-50%); transition: width 0.3s var(--expo), height 0.3s var(--expo), border-color 0.15s, opacity 0.3s; opacity: 0.7; }
+body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring { width: 52px; height: 52px; opacity: 0.35; }
+
+/* PROGRESS */
+.progress-bar { position: fixed; top: 36px; left: 0; z-index: 99; height: 2px; width: 0; background: linear-gradient(90deg, var(--accent), var(--gold-lt)); transition: width 0.1s linear; }
+
+/* TICKER */
+.nav-ticker { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 36px; overflow: hidden; background: var(--ink); display: flex; align-items: center; }
+.ticker-track { display: flex; white-space: nowrap; animation: ticker 30s linear infinite; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-item { font-family: var(--f-mono); font-size: 10px; font-weight: 500; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; padding: 0 32px; }
+.ticker-item span { color: var(--white); opacity: 0.4; margin-right: 8px; }
+
+/* SIDE NAV */
+.side-nav { position: fixed; right: 2rem; top: 50%; transform: translateY(-50%); z-index: 50; display: flex; flex-direction: column; gap: 10px; }
+.side-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(10,10,11,0.2); border: 1px solid rgba(10,10,11,0.15); cursor: none; transition: all 0.3s; display: block; text-decoration: none; }
+.side-dot.active { background: var(--gold); border-color: var(--gold); height: 20px; border-radius: 3px; }
+
+/* SCROLL TO TOP */
+.scroll-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; width: 44px; height: 44px; background: var(--ink); border: 1px solid rgba(201,168,76,0.4); display: flex; align-items: center; justify-content: center; cursor: none; opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity 0.3s var(--expo), transform 0.3s var(--expo), background 0.2s, border-color 0.2s; }
+.scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.scroll-top:hover { background: var(--accent); border-color: var(--accent); }
+.scroll-top:hover .stt-icon { stroke: var(--ink); }
+.stt-icon { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.8; transition: stroke 0.2s; }
+
+/* HERO */
+.hero { min-height: 100vh; padding-top: 36px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; position: relative; overflow: hidden; }
+.hero-bg-letter { position: absolute; right: -0.05em; top: 50%; transform: translateY(-54%); font-family: var(--f-display); font-size: clamp(280px,42vw,580px); font-weight: 700; font-style: italic; color: transparent; -webkit-text-stroke: 1px rgba(184,134,11,0.12); pointer-events: none; user-select: none; line-height: 1; z-index: 0; }
+.hero-left { grid-column: 1; grid-row: 1; padding: 8vh 6vw 6vh 7vw; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.hero-eyebrow { font-family: var(--f-mono); font-size: 10px; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 12px; }
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero-name { font-family: var(--f-display); font-size: clamp(52px,8vw,104px); font-weight: 600; line-height: 0.95; color: var(--ink); letter-spacing: -0.02em; margin-bottom: 0.2em; }
+.hero-name em { font-style: italic; font-weight: 300; color: var(--gold); }
+.hero-title { font-family: var(--f-sans); font-size: clamp(13px,1.4vw,17px); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 3rem; }
+.hero-summary { font-family: var(--f-display); font-size: clamp(17px,1.8vw,22px); font-weight: 400; font-style: italic; line-height: 1.65; color: var(--ink-3); max-width: 480px; border-left: 2px solid var(--accent); padding-left: 1.5rem; margin-bottom: 3.5rem; }
+.hero-stats { display: flex; gap: 3rem; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-family: var(--f-display); font-size: clamp(32px,4vw,48px); font-weight: 600; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.stat-num sup { font-size: 0.45em; vertical-align: super; color: var(--gold); }
+.stat-label { font-family: var(--f-mono); font-size: 9px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.hero-right { grid-column: 2; grid-row: 1; position: relative; z-index: 2; display: flex; align-items: stretch; }
+.hero-panel { background: var(--ink); width: 100%; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 4vh 4vw 6vh; animation: panelIn 1.1s var(--expo) 0.2s both; }
+@keyframes panelIn { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0% 0 0); } }
+.hero-panel::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(184,134,11,0.15) 0%, transparent 60%); }
+.hero-panel-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px); background-size: 48px 48px; }
+.hero-headshot { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.hero-headshot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; mask-image: linear-gradient(to bottom, black 60%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%); opacity: 0.85; }
+.hero-headshot img:not([style*="display:none"]) + .headshot-ph { display: none; }
+.headshot-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; border: 1px dashed rgba(201,168,76,0.25); margin: 2rem; }
+.headshot-ph svg { width: 72px; height: 72px; opacity: 0.5; }
+.headshot-ph span { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,168,76,0.45); }
+.hero-skills-float { position: absolute; top: 2.5rem; right: 3rem; z-index: 2; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.skill-tag { font-family: var(--f-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.35); padding: 5px 10px; background: rgba(10,10,11,0.6); opacity: 0; animation: fadeSlideLeft 0.6s var(--expo) forwards; }
+@keyframes fadeSlideLeft { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+.skill-tag:nth-child(1) { animation-delay: 0.8s; }
+.skill-tag:nth-child(2) { animation-delay: 0.95s; }
+.skill-tag:nth-child(3) { animation-delay: 1.1s; }
+.skill-tag:nth-child(4) { animation-delay: 1.25s; }
+.skill-tag:nth-child(5) { animation-delay: 1.4s; }
+.hero-contact { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1.2rem; }
+.contact-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.contact-item { display: flex; align-items: center; gap: 12px; }
+.contact-icon { width: 32px; height: 32px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-icon svg { width: 14px; height: 14px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+.contact-text { font-family: var(--f-mono); font-size: 11px; color: rgba(255,255,255,0.75); letter-spacing: 0.05em; }
+.contact-link { text-decoration: none; cursor: none; transition: color 0.2s; }
+.contact-link:hover { color: var(--accent); }
+.hero-bar { grid-column: 1 / -1; grid-row: 2; background: var(--ink-2); display: flex; align-items: stretch; height: 64px; }
+.bar-item { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 2rem; border-right: 1px solid rgba(255,255,255,0.06); text-decoration: none; cursor: none; transition: background 0.3s; }
+.bar-item:last-child { border-right: none; }
+.bar-item:hover { background: rgba(201,168,76,0.08); }
+.bar-num { font-family: var(--f-mono); font-size: 9px; color: var(--accent); letter-spacing: 0.1em; }
+.bar-text { font-family: var(--f-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.hero-left > * { opacity: 0; animation: fadeUp 0.9s var(--expo) forwards; }
+.hero-eyebrow { animation-delay: 0.15s; } .hero-name { animation-delay: 0.3s; } .hero-title { animation-delay: 0.42s; } .hero-summary { animation-delay: 0.55s; } .hero-stats { animation-delay: 0.68s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* SHARED */
+.section-label { font-family: var(--f-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.section-label::after { content: ''; flex: 0 0 24px; height: 1px; background: var(--gold); }
+.section-title { font-family: var(--f-display); font-size: clamp(36px,5vw,64px); font-weight: 600; line-height: 0.95; letter-spacing: -0.02em; color: var(--ink); }
+.section-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+
+/* EXPERIENCE */
+.experience { padding: 8rem 7vw; background: var(--white); }
+.exp-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+.exp-header-desc { font-family: var(--f-display); font-size: 15px; font-style: italic; color: var(--mid); max-width: 320px; line-height: 1.7; }
+.exp-timeline { position: relative; }
+.exp-timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--accent), transparent); }
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 4rem; padding: 3.5rem 0 3.5rem 3rem; border-bottom: 1px solid var(--rule); position: relative; opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--expo), transform 0.7s var(--expo); }
+.exp-item.visible { opacity: 1; transform: translateY(0); }
+.exp-item:last-child { border-bottom: none; }
+.exp-item::before { content: ''; position: absolute; left: -4.5px; top: 3.75rem; width: 9px; height: 9px; border-radius: 50%; background: var(--white); border: 2px solid var(--accent); transition: background 0.3s; }
+.exp-item:hover::before { background: var(--accent); }
+.exp-meta { padding-top: 4px; }
+.exp-period { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--gold); display: block; margin-bottom: 6px; }
+.exp-location { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--muted); display: block; margin-bottom: 12px; }
+.exp-type { display: inline-block; font-family: var(--f-mono); font-size: 8px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(201,168,76,0.4); padding: 3px 8px; }
+.exp-role { font-family: var(--f-display); font-size: clamp(22px,2.5vw,30px); font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 4px; letter-spacing: -0.01em; }
+.exp-company { font-family: var(--f-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); margin-bottom: 1.5rem; }
+.company-link { color: inherit; text-decoration: none; cursor: none; position: relative; transition: color 0.2s; }
+.company-link::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px; background: var(--accent); transition: width 0.3s var(--expo); }
+.company-link:hover { color: var(--gold); }
+.company-link:hover::after { width: 100%; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.exp-bullets li { font-family: var(--f-display); font-size: 15px; font-weight: 400; line-height: 1.6; color: var(--ink-3); padding-left: 1.2rem; position: relative; }
+.exp-bullets li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 1px; background: var(--accent); }
+.exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.2rem; }
+.exp-tag { font-family: var(--f-mono); font-size: 8.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--paper); border: 1px solid var(--rule); padding: 4px 10px; border-radius: 2px; }
+
+/* SKILLS */
+.skills-section { background: var(--ink); padding: 8rem 7vw; overflow: hidden; position: relative; }
+.skills-section::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.skills-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.skills-section .section-label { color: var(--accent); }
+.skills-section .section-label::after { background: var(--accent); }
+.skills-section .section-title { color: var(--white); }
+.skills-section .section-title em { color: var(--gold-lt); }
+.skills-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 5rem; align-items: end; position: relative; z-index: 2; }
+.skills-intro { font-family: var(--f-display); font-size: 18px; font-weight: 400; font-style: italic; line-height: 1.7; color: rgba(255,255,255,0.6); grid-column: 2; }
+.skills-matrix { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; position: relative; z-index: 2; }
+.skill-cell { padding: 2rem 1.8rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; transition: background 0.3s, border-color 0.3s; cursor: none; }
+.skill-cell:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.25); }
+.skill-cell::before { content: ''; position: absolute; bottom: 0; left: 0; height: 2px; width: var(--pct,80%); background: linear-gradient(90deg, var(--accent), transparent); opacity: 0.5; }
+.skill-cell-label { font-family: var(--f-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+.skill-cell-sub { font-family: var(--f-mono); font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+
+/* SNAPSHOT */
+.snapshot { padding: 8rem 7vw; background: var(--paper); position: relative; }
+.snapshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 4rem; }
+.snap-card { background: var(--white); padding: 3.5rem; border: 1px solid var(--rule); position: relative; overflow: hidden; opacity: 0; transform: scale(0.98); transition: opacity 0.6s var(--expo), transform 0.6s var(--expo); }
+.snap-card.visible { opacity: 1; transform: scale(1); }
+.snap-card:hover { border-color: var(--accent); }
+.snap-card::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.4s var(--expo); }
+.snap-card:hover::after { height: 100%; }
+.snap-num { font-family: var(--f-display); font-size: clamp(52px,6vw,80px); font-weight: 600; line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+.snap-num .unit { color: var(--gold); font-size: 0.5em; vertical-align: super; }
+.snap-title { font-family: var(--f-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); margin-bottom: 1rem; }
+.snap-desc { font-family: var(--f-display); font-size: 15px; font-weight: 400; font-style: italic; line-height: 1.6; color: var(--ink-3); max-width: 340px; }
+
+/* CTA */
+.cta-section { padding: 10rem 7vw; background: var(--ink); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(184,134,11,0.1), transparent); pointer-events: none; }
+.cta-headshot { position: absolute; right: 0; top: 0; bottom: 0; width: 42%; pointer-events: none; z-index: 1; }
+.cta-headshot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; mask-image: linear-gradient(to left, rgba(0,0,0,0.45) 0%, transparent 100%); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.45) 0%, transparent 100%); opacity: 0.4; filter: grayscale(20%); }
+.cta-headshot img:not([style*="display:none"]) + .cta-ph { display: none; }
+.cta-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border: 1px dashed rgba(201,168,76,0.15); margin: 3rem 2rem; }
+.cta-ph svg { width: 60px; height: 60px; }
+.cta-ph span { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(201,168,76,0.35); }
+.cta-inner { position: relative; z-index: 2; max-width: 700px; }
+.cta-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+.cta-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+.cta-heading { font-family: var(--f-display); font-size: clamp(40px,6vw,80px); font-weight: 600; line-height: 0.95; color: var(--white); letter-spacing: -0.02em; margin-bottom: 2.5rem; }
+.cta-heading em { font-style: italic; font-weight: 300; color: var(--accent); }
+.cta-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; cursor: none; padding: 14px 28px; transition: all 0.3s var(--expo); }
+.cta-btn-primary { background: var(--accent); color: var(--ink); }
+.cta-btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.cta-btn-outline { border: 1px solid rgba(201,168,76,0.4); color: var(--accent); }
+.cta-btn-outline:hover { border-color: var(--accent); background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+.cta-btn-arrow { font-size: 14px; line-height: 1; }
+.footer-meta { margin-top: 8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.footer-name { font-family: var(--f-display); font-size: 14px; font-weight: 600; font-style: italic; color: rgba(255,255,255,0.3); }
+.footer-copy { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 8vh 6vw; }
+  .hero-stats { gap: 2rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 1rem; padding-left: 2rem; }
+  .exp-meta { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .skills-header { grid-template-columns: 1fr; }
+  .skills-intro { grid-column: 1; }
+  .skills-matrix { grid-template-columns: repeat(2,1fr); }
+  .snapshot-grid { grid-template-columns: 1fr; }
+  .side-nav { display: none; }
+  .exp-header { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .cta-headshot { display: none; }
+}
+@media (max-width: 600px) {
+  .hero-bar { flex-direction: column; height: auto; }
+  .bar-item { padding: 1rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .skills-matrix { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="nav-ticker" role="marquee" aria-label="Professional highlights">
+  <div class="ticker-track">
+    <span class="ticker-item"><span>01</span> Senior SaaS Sales Leader</span>
+    <span class="ticker-item"><span>·</span> 8+ Years B2B Experience</span>
+    <span class="ticker-item"><span>02</span> 60+ Person Team Leadership</span>
+    <span class="ticker-item"><span>·</span> Consistent Quota Overachievement</span>
+    <span class="ticker-item"><span>03</span> Mid-Market &amp; Enterprise Closing</span>
+    <span class="ticker-item"><span>·</span> Outbound Pipeline Architect</span>
+    <span class="ticker-item"><span>04</span> Health Tech · Restaurant Tech · Security</span>
+    <span class="ticker-item"><span>·</span> RepeatMD · Zenoti · Lunchbox · Squire · Mindbody</span>
+    <span class="ticker-item"><span>01</span> Senior SaaS Sales Leader</span>
+    <span class="ticker-item"><span>·</span> 8+ Years B2B Experience</span>
+    <span class="ticker-item"><span>02</span> 60+ Person Team Leadership</span>
+    <span class="ticker-item"><span>·</span> Consistent Quota Overachievement</span>
+    <span class="ticker-item"><span>03</span> Mid-Market &amp; Enterprise Closing</span>
+    <span class="ticker-item"><span>·</span> Outbound Pipeline Architect</span>
+    <span class="ticker-item"><span>04</span> Health Tech · Restaurant Tech · Security</span>
+    <span class="ticker-item"><span>·</span> RepeatMD · Zenoti · Lunchbox · Squire · Mindbody</span>
+  </div>
+</div>
+
+<nav class="side-nav" id="sideNav" aria-label="Page sections">
+  <a class="side-dot active" href="#hero"       aria-label="Hero"></a>
+  <a class="side-dot"        href="#experience" aria-label="Experience"></a>
+  <a class="side-dot"        href="#skills"     aria-label="Skills"></a>
+  <a class="side-dot"        href="#snapshot"   aria-label="Snapshot"></a>
+  <a class="side-dot"        href="#contact"    aria-label="Contact"></a>
+</nav>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg class="stt-icon" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-letter" aria-hidden="true">Z</div>
+    <div class="hero-left">
+      <p class="hero-eyebrow">Career Record &nbsp;·&nbsp; 2017 to Present</p>
+      <h1 class="hero-name">Zack<br><em>Balzer</em></h1>
+      <p class="hero-title">Senior Sales Leader &nbsp;·&nbsp; SaaS Growth Expert</p>
+      <blockquote class="hero-summary">Nine years of building pipeline, closing deals, and turning sales teams into revenue engines across the most competitive SaaS verticals.</blockquote>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">9<sup>+</sup></span><span class="stat-label">Years in Sales</span></div>
+        <div class="stat"><span class="stat-num">60<sup>+</sup></span><span class="stat-label">Team ICs Led</span></div>
+        <div class="stat"><span class="stat-num">6</span><span class="stat-label">SaaS Companies</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-panel">
+        <div class="hero-panel-grid" aria-hidden="true"></div>
+        <div class="hero-headshot">
+          <img src="zack_balzer_headshot.webp" alt="Zack Balzer" onerror="this.style.display='none'" />
+          <div class="headshot-ph" aria-hidden="true">
+            <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="16" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/><path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/></svg>
+            <span>zack_balzer_headshot.webp</span>
+          </div>
+        </div>
+        <div class="hero-skills-float" aria-hidden="true">
+          <span class="skill-tag">Enterprise Closing</span>
+          <span class="skill-tag">Outbound Strategy</span>
+          <span class="skill-tag">Team Leadership</span>
+          <span class="skill-tag">Revenue Ops</span>
+          <span class="skill-tag">SaaS Sales</span>
+        </div>
+        <div class="hero-contact">
+          <p class="contact-label">Get in Touch</p>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <span class="contact-text">St. Louis, Missouri</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <a href="https://www.linkedin.com/in/zackbalzer" target="_blank" rel="noopener" class="contact-text contact-link">linkedin.com/in/zackbalzer</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <span class="contact-text">Open to Remote &amp; Hybrid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bar">
+      <a class="bar-item" href="#experience"><span class="bar-num">01</span><span class="bar-text">Experience</span></a>
+      <a class="bar-item" href="#skills"><span class="bar-num">02</span><span class="bar-text">Competencies</span></a>
+      <a class="bar-item" href="#snapshot"><span class="bar-num">03</span><span class="bar-text">By the Numbers</span></a>
+      <a class="bar-item" href="#contact"><span class="bar-num">04</span><span class="bar-text">Let's Talk</span></a>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience" id="experience">
+    <div class="exp-header">
+      <div>
+        <p class="section-label">Career History</p>
+        <h2 class="section-title">Professional<br><em>Experience</em></h2>
+      </div>
+      <p class="exp-header-desc">A decade-long record of progressive growth, leadership, and consistent overperformance across some of the most competitive markets in SaaS.</p>
+    </div>
+    <div class="exp-timeline">
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">Jun 2025 — Present</span><span class="exp-location">Remote</span><span class="exp-type">SaaS · Full-Cycle</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Senior Account Executive</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/repeatmd/" target="_blank" rel="noopener" class="company-link">RepeatMD</a></p>
+          <ul class="exp-bullets">
+            <li>Drive new business acquisition for a SaaS platform purpose-built for medspas and aesthetic practices nationwide, owning the full sales cycle from cold outreach through contract execution.</li>
+            <li>Build and maintain a consistent outbound pipeline through strategic prospecting, targeted outreach cadences, and executive-level engagement with practice owners and decision-makers.</li>
+            <li>Leverage deep SaaS expertise and consultative selling methodology to communicate ROI and product value in a competitive, fast-moving marketplace.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">SaaS</span><span class="exp-tag">Medtech</span><span class="exp-tag">Outbound</span><span class="exp-tag">Full-Cycle Sales</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">Jul 2023 — Jun 2025</span><span class="exp-location">St. Louis, MO</span><span class="exp-type">Leadership · 2 Years</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Head of Sales &amp;<br>Business Development</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/secure24adt/" target="_blank" rel="noopener" class="company-link">Secure24 Alarms</a></p>
+          <ul class="exp-bullets">
+            <li>Directed a 60+ person organization of individual contributors and managers responsible for outbound prospecting, pipeline generation, and revenue closing across key markets.</li>
+            <li>Designed and deployed a comprehensive sales playbook that standardized outreach cadences, objection handling frameworks, and close protocols, driving measurable improvement in team conversion rates.</li>
+            <li>Built a high-performance culture through rigorous weekly deal reviews, structured coaching, and data-driven accountability systems linking individual activity to team revenue outcomes.</li>
+            <li>Partnered cross-functionally with marketing, operations, and executive leadership to align go-to-market messaging, accelerate deal velocity, and hit organizational revenue targets.</li>
+            <li>Recruited, hired, and onboarded top-tier sales talent, significantly reducing ramp time through structured training programs and peer mentorship initiatives.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Team Leadership</span><span class="exp-tag">Sales Management</span><span class="exp-tag">Playbook Design</span><span class="exp-tag">Coaching</span><span class="exp-tag">Hiring</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">Apr 2022 — Jun 2023</span><span class="exp-location">Remote</span><span class="exp-type">Mid-Market SaaS</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Mid-Market Account Executive</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/zenoti/" target="_blank" rel="noopener" class="company-link">Zenoti</a></p>
+          <ul class="exp-bullets">
+            <li>Sold an enterprise SaaS management platform to mid-market wellness, salon, and spa businesses across North America, consistently ranking among the top performers in quota attainment.</li>
+            <li>Managed complex, multi-stakeholder sales cycles, building consensus across operations, finance, and ownership to move deals through a rigorous evaluation process.</li>
+            <li>Leveraged deep product knowledge and competitive positioning to differentiate Zenoti in a crowded marketplace and win business from entrenched incumbent solutions.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Enterprise SaaS</span><span class="exp-tag">Mid-Market</span><span class="exp-tag">Wellness Tech</span><span class="exp-tag">Complex Sales</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">Apr 2021 — Apr 2022</span><span class="exp-location">Remote</span><span class="exp-type">Strategic Accounts</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Strategic Account Executive</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/lunchboxtech/" target="_blank" rel="noopener" class="company-link">Lunchbox</a></p>
+          <ul class="exp-bullets">
+            <li>Sold restaurant technology SaaS including online ordering, loyalty programs, and marketing automation to multi-unit and enterprise restaurant groups, building executive-level relationships with VP and C-suite buyers.</li>
+            <li>Navigated complex, multi-stakeholder deals in the competitive restaurant tech landscape, consistently meeting and exceeding quota through disciplined pipeline management and strategic account development.</li>
+            <li>Contributed to company growth during a high-velocity expansion phase, helping establish Lunchbox's presence in new market segments.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">Restaurant Tech</span><span class="exp-tag">Strategic Sales</span><span class="exp-tag">C-Suite Engagement</span><span class="exp-tag">SaaS</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">May 2020 — Apr 2021</span><span class="exp-location">Remote</span><span class="exp-type">SaaS · Top Performer</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Senior Account Executive</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/squ%C4%ABr-technologies/" target="_blank" rel="noopener" class="company-link">Squire</a></p>
+          <ul class="exp-bullets">
+            <li>Drove new business acquisition for Squire's barbershop management SaaS platform across U.S. markets, owning the complete sales cycle from cold prospecting through contract close.</li>
+            <li>Delivered top-tier close rates through a repeatable outbound strategy combining high-quality personalized outreach with a consultative, ROI-focused sales approach.</li>
+            <li>Contributed to significant quarter-over-quarter pipeline growth during a critical period of company expansion into new verticals.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">SaaS</span><span class="exp-tag">SMB Sales</span><span class="exp-tag">Beauty Tech</span><span class="exp-tag">Pipeline Building</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">May 2018 — May 2020</span><span class="exp-location">Scottsdale, AZ</span><span class="exp-type">Promoted 3x · Team Lead</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">AE &rarr; Senior AE &rarr;<br>Mid-Market Team Lead</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/mindbody/" target="_blank" rel="noopener" class="company-link">Mindbody</a></p>
+          <ul class="exp-bullets">
+            <li>Earned three successive promotions in under two years, from Account Executive to Senior AE to Mid-Market Team Lead, driven entirely by consistent top-performer status and demonstrated leadership capability.</li>
+            <li>Sold Mindbody's comprehensive SaaS platform to health, wellness, and fitness studios across a large territory, developing a mastery of consultative, value-driven selling at scale.</li>
+            <li>As Team Lead, ran pipeline reviews, mentored junior representatives, and provided deal coaching that directly contributed to team-level quota attainment and accelerated rep development.</li>
+            <li>Achieved President's Club-level performance through disciplined outbound activity, precise CRM management, and an uncompromising approach to quota execution.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">SaaS</span><span class="exp-tag">Health &amp; Wellness Tech</span><span class="exp-tag">Team Lead</span><span class="exp-tag">President's Club</span></div>
+        </div>
+      </article>
+
+      <article class="exp-item" data-scroll>
+        <div class="exp-meta"><span class="exp-period">Mar 2017 — May 2018</span><span class="exp-location">St. Louis, MO</span><span class="exp-type">Sales Foundation</span></div>
+        <div class="exp-body">
+          <h3 class="exp-role">Account Executive</h3>
+          <p class="exp-company"><a href="https://www.linkedin.com/company/secure24adt/" target="_blank" rel="noopener" class="company-link">Secure24 — ADT Authorized Dealer</a></p>
+          <ul class="exp-bullets">
+            <li>Launched a professional sales career through high-volume outbound prospecting and direct business development, consistently exceeding monthly quotas through strong community relationships and compelling consultations.</li>
+            <li>Developed the foundational sales disciplines including objection handling, closing techniques, pipeline management, and customer psychology that became the bedrock of a high-performing career.</li>
+          </ul>
+          <div class="exp-tags"><span class="exp-tag">B2B Sales</span><span class="exp-tag">Outbound</span><span class="exp-tag">Sales Foundation</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="skills-grid-bg" aria-hidden="true"></div>
+    <div class="skills-header">
+      <div>
+        <p class="section-label">Core Capabilities</p>
+        <h2 class="section-title">What I<br><em>Bring</em></h2>
+      </div>
+      <p class="skills-intro">From cold call to close, from individual contributor to building organizations, these are the capabilities that have driven consistent, measurable revenue impact across every role.</p>
+    </div>
+    <div class="skills-matrix" role="list">
+      <div class="skill-cell" style="--pct:95%" role="listitem"><p class="skill-cell-label">Full-Cycle SaaS Sales</p><p class="skill-cell-sub">Prospect &rarr; Demo &rarr; Negotiate &rarr; Close</p></div>
+      <div class="skill-cell" style="--pct:92%" role="listitem"><p class="skill-cell-label">Sales Team Leadership</p><p class="skill-cell-sub">60+ ICs, Managers, BDRs</p></div>
+      <div class="skill-cell" style="--pct:90%" role="listitem"><p class="skill-cell-label">Outbound Pipeline Architecture</p><p class="skill-cell-sub">Cadences, Sequences, Multi-Channel</p></div>
+      <div class="skill-cell" style="--pct:88%" role="listitem"><p class="skill-cell-label">Mid-Market &amp; Enterprise Closing</p><p class="skill-cell-sub">Complex, Multi-Stakeholder Deals</p></div>
+      <div class="skill-cell" style="--pct:93%" role="listitem"><p class="skill-cell-label">Quota Attainment &amp; Forecasting</p><p class="skill-cell-sub">Consistent Top-10% Performance</p></div>
+      <div class="skill-cell" style="--pct:85%" role="listitem"><p class="skill-cell-label">Sales Playbook Development</p><p class="skill-cell-sub">Process Design, Documentation</p></div>
+      <div class="skill-cell" style="--pct:88%" role="listitem"><p class="skill-cell-label">Coaching &amp; Development</p><p class="skill-cell-sub">1:1s, Deal Reviews, Rep Ramp</p></div>
+      <div class="skill-cell" style="--pct:82%" role="listitem"><p class="skill-cell-label">Revenue Operations</p><p class="skill-cell-sub">CRM, Forecasting, Pipeline Health</p></div>
+      <div class="skill-cell" style="--pct:87%" role="listitem"><p class="skill-cell-label">Strategic Account Management</p><p class="skill-cell-sub">Executive Relationships, Expansion</p></div>
+      <div class="skill-cell" style="--pct:91%" role="listitem"><p class="skill-cell-label">Contract Negotiation</p><p class="skill-cell-sub">Multi-Year, Enterprise Agreements</p></div>
+      <div class="skill-cell" style="--pct:84%" role="listitem"><p class="skill-cell-label">Cross-Functional Collaboration</p><p class="skill-cell-sub">Marketing, Product, CS Alignment</p></div>
+      <div class="skill-cell" style="--pct:89%" role="listitem"><p class="skill-cell-label">Talent Acquisition &amp; Hiring</p><p class="skill-cell-sub">Interviewing, Onboarding, Culture</p></div>
+    </div>
+  </section>
+
+  <!-- SNAPSHOT -->
+  <section class="snapshot" id="snapshot">
+    <p class="section-label">By the Numbers</p>
+    <h2 class="section-title">Career<br><em>Metrics</em></h2>
+    <div class="snapshot-grid">
+      <div class="snap-card" data-scroll><p class="snap-num">9<span class="unit">+</span></p><p class="snap-title">Years in Sales</p><p class="snap-desc">Nine years of progressive growth from individual contributor to organizational leader, spanning SaaS, tech, and enterprise B2B.</p></div>
+      <div class="snap-card" data-scroll><p class="snap-num">60<span class="unit">+</span></p><p class="snap-title">Individual Contributors Led</p><p class="snap-desc">Built and directed a business development organization of over 60 ICs and managers, driving culture, accountability, and revenue growth at scale.</p></div>
+      <div class="snap-card" data-scroll><p class="snap-num">100<span class="unit">%</span></p><p class="snap-title">Quota Attainment Rate</p><p class="snap-desc">A career-long record of meeting and exceeding sales quota across every role held, including multiple President's Club-caliber performances.</p></div>
+      <div class="snap-card" data-scroll><p class="snap-num">6</p><p class="snap-title">SaaS Companies</p><p class="snap-desc">Deep cross-industry experience spanning health and wellness tech, restaurant tech, barbershop tech, medspa SaaS, and security, building versatility across buyer types and deal structures.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-headshot">
+      <img src="zack_balzer_headshot.webp" alt="Zack Balzer" onerror="this.style.display='none'" />
+      <div class="cta-ph">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="30" r="16" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/><path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/></svg>
+        <span>zack_balzer_headshot.webp</span>
+      </div>
+    </div>
+    <div class="cta-inner">
+      <p class="cta-label">Ready to Contribute</p>
+      <h2 class="cta-heading">Let's Build<br>Something<br><em>Significant.</em></h2>
+      <div class="cta-links">
+        <a href="https://linkedin.com/in/zackbalzer" class="cta-btn cta-btn-primary" target="_blank" rel="noopener">Connect on LinkedIn <span class="cta-btn-arrow">&#8594;</span></a>
+        <a href="mailto:zack@zbcreative.agency" class="cta-btn cta-btn-outline">Send a Message <span class="cta-btn-arrow">&#8594;</span></a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-name">Zack Balzer &mdash; Senior Sales Leader</span>
+      <span class="footer-copy">St. Louis, Missouri &nbsp;·&nbsp; Available for Remote &amp; Hybrid</span>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Cursor
+  const ring = document.getElementById('cursorRing');
+  const dot  = document.getElementById('cursorDot');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function anim() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    dot.style.left  = mx + 'px'; dot.style.top  = my + 'px';
+    requestAnimationFrame(anim);
+  })();
+
+  // Cursor color on dark sections
+  document.querySelectorAll('.skills-section, .cta-section, .nav-ticker, .hero-panel, .hero-bar').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.style.background = '#ffffff'; ring.style.borderColor = '#ffffff'; });
+    el.addEventListener('mouseleave', () => { dot.style.background = '#C9A84C'; ring.style.borderColor = '#C9A84C'; });
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+  }, { passive: true });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-scroll]').forEach(el => obs.observe(el));
+
+  // Side nav
+  const sectionIds = ['hero','experience','skills','snapshot','contact'];
+  const sideDots = document.querySelectorAll('.side-dot');
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const i = sectionIds.indexOf(id);
+          sideDots.forEach((d, j) => d.classList.toggle('active', i === j));
+        }
+      });
+    }, { threshold: 0.4 }).observe(el);
+  });
+
+  // Scroll to top
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
